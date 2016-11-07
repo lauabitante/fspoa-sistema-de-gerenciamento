@@ -1,0 +1,43 @@
+
+public class Colaborador {
+	
+	private String nomeProjeto;
+	private String colaborador;
+	private String competencia;
+
+	public Colaborador(String nomeProjeto, String colaborador, String competencia) {
+		this.nomeProjeto = nomeProjeto;
+		this.colaborador = colaborador;
+		this.competencia = competencia;
+	}
+
+	public String getNomeProjeto() {
+		return nomeProjeto;
+	}
+
+	public void setNomeProjeto(String nomeProjeto) {
+		this.nomeProjeto = nomeProjeto;
+	}
+
+	public String getCompetencia() {
+		return competencia;
+	}
+
+	public void setCompetencia(String competencia) {
+		this.competencia = competencia;
+	}
+
+	public String getColaborador() {
+		return colaborador;
+	}
+
+	public void setColaborador(String colaborador) {
+		this.colaborador = colaborador;
+	}
+
+	@Override
+	public String toString() {
+		return "Colaborador [nomeProjeto=" + nomeProjeto + ", colaborador=" + colaborador + ", competencia="
+				+ competencia + "]";
+	}
+}

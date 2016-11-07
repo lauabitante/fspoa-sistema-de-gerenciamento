@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class ParserProjeto implements Parser<Projeto> {
+
+	@Override
+	public Projeto parseObject(String dadosCSV) {
+		
+		Scanner scan = new Scanner(dadosCSV);
+		scan.useDelimiter(";");
+
+		String proj = scan.next();
+		
+		Projeto projeto = new Projeto(proj);
+
+		scan.close();
+
+		return projeto;
+		
+	}
+
+}

@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class ParserColaborador implements Parser<Colaborador>{
+
+	@Override
+	public Colaborador parseObject(String dadosCSV) {
+
+		Scanner scan = new Scanner(dadosCSV);
+		scan.useDelimiter(";");
+		
+		System.out.println(scan.next());
+		System.out.println(scan.next());
+		
+		String nome = scan.next();
+		Double salario = scan.nextDouble();
+		
+		Colaborador colaborador = new Colaborador(nome, salario);
+		
+		scan.close();
+		
+		return colaborador;
+	}
+
+}

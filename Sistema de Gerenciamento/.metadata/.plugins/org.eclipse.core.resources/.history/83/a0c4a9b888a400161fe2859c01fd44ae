@@ -1,0 +1,19 @@
+import java.util.Arrays;
+
+public class Colaborador {
+	
+	private String nome;
+	private Double salario;
+
+	public Colaborador(String nome, Double salario) {
+		this.nome = nome;
+		this.salario = salario;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Colaborador [nome=" + nome + ", salario" + "salario]";
+	}
+
+}

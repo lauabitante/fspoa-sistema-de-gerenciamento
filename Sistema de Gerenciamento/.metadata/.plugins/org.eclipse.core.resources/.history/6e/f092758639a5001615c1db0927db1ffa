@@ -1,0 +1,38 @@
+public class Funcionario {
+	
+	private String nome;
+	private Double salario;
+	private ListaEncadeada<Competencia> competencias = new ListaEncadeada<>(); 
+	
+	public Funcionario(String nome, Double salario) {
+		this.nome = nome;
+		this.salario = salario;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Double getSalario() {
+		return salario;
+	}
+
+	public void setSalario(Double salario) {
+		this.salario = salario;
+	}
+	
+	public void adicionaCompetencia(String competencia){
+		Competencia novaCompetencia = new Competencia(competencia);		
+		competencias.adiciona(novaCompetencia);
+	}
+	
+
+	@Override
+	public String toString() {
+		return "Funcionario [nome=" + nome + ", salario=" + salario + "]";
+	}
+}

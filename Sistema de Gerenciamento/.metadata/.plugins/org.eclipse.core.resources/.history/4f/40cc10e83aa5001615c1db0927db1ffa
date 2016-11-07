@@ -1,0 +1,22 @@
+
+public class Projeto {
+
+	private String projeto;
+
+	public Projeto(String projeto) {
+		this.projeto = projeto;
+	}
+
+	public String getProjeto() {
+		return projeto;
+	}
+
+	public void setProjeto(String projeto) {
+		this.projeto = projeto;
+	}
+
+	@Override
+	public String toString() {
+		return "Projeto [projeto=" + projeto + "]";
+	}	
+}

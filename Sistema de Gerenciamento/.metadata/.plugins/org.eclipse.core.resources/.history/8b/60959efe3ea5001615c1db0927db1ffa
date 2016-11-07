@@ -1,0 +1,111 @@
+import java.io.FileNotFoundException;
+
+public class Aplicacao {
+	
+	ListaEncadeada<Colaborador> listaColaboradores = new ListaEncadeada<>();
+	ListaEncadeada<Competencia> listaCompetencias  = new ListaEncadeada<>();
+	ListaEncadeada<Funcionario> listaFuncionarios  = new ListaEncadeada<>();
+	ListaEncadeada<Projeto> 	listaProjetos	   = new ListaEncadeada<>();
+	
+	public Aplicacao() {
+		try {
+			run();
+		} catch (FileNotFoundException e) {
+			System.err.println("Arquivo nao encontrado");
+			System.err.println(e.getMessage());
+		}
+	}
+
+	public void run() throws FileNotFoundException {
+		
+		lerArquivo("colaboradores.csv", listaColaboradores, new ParserColaborador());
+		lerArquivo("competencias.csv", listaCompetencias, new ParserCompetencia());
+		lerArquivo("funcionarios.csv", listaFuncionarios, new ParserFuncionario());
+		lerArquivo("projetos.csv", listaProjetos, new ParserProjeto());
+		
+		System.out.println(listaFuncionarios.toString());
+		
+//		lerColaboradores();
+//		lerCompetencias();
+//		lerFuncionarios();		
+//		lerProjetos();		
+	}
+	
+	
+	
+	public <T> void lerArquivo(String nomeArquivo, ListaEncadeada<T> lista, Parser<T> parser) throws FileNotFoundException {
+		CSVFile<T> csv;
+		csv = new CSVFile<>(nomeArquivo, parser);
+		T objeto = null;
+		do {
+			objeto = csv.readObject();
+			if (objeto != null){
+				lista.adiciona(objeto);
+			}
+		} while (objeto != null);
+		System.out.println();
+	}
+}
+	
+	
+//	public void lerColaboradores() throws FileNotFoundException {
+//		Parser<Colaborador> parserColaborador = new ParserColaborador();		
+//		CSVFile<Colaborador> csvColaborador;
+//		csvColaborador = new CSVFile<>("colaboradores.csv", parserColaborador);
+//		Colaborador colaborador = null;
+//		do {
+//			colaborador = csvColaborador.readObject();
+//			if (colaborador != null){
+//				listaColaboradores.adiciona(colaborador);
+////				System.out.println(colaborador);
+//			}
+//		} while (colaborador != null);
+//		System.out.println();
+//	}
+//	
+//	public void lerCompetencias() throws FileNotFoundException {
+//		Parser<Competencia> parserCompetencia = new ParserCompetencia();		
+//		CSVFile<Competencia> csvCompetencia;
+//		csvCompetencia = new CSVFile<>("competencias.csv", parserCompetencia);
+//		Competencia competencia = null;
+//		do {
+//			competencia = csvCompetencia.readObject();
+//			if (competencia != null){
+//				listaCompetencias.adiciona(competencia);
+////				System.out.println(competencia);
+//			}
+//		} while (competencia != null);
+//		System.out.println();
+//	}
+//	
+//	public void lerFuncionarios() throws FileNotFoundException {
+//		Parser<Funcionario> parserFuncionario = new ParserFuncionario();		
+//		CSVFile<Funcionario> csvFuncionario;
+//		csvFuncionario = new CSVFile<>("funcionarios.csv", parserFuncionario);
+//		Funcionario funcionario = null;
+//		do {
+//			funcionario = csvFuncionario.readObject();
+//			if (funcionario != null){
+//				listaFuncionarios.adiciona(funcionario);
+////				System.out.println(funcionario);
+//			}
+//		} while (funcionario != null);
+//		System.out.println();
+//	}
+//	
+//	public void lerProjetos() throws FileNotFoundException {
+//		Parser<Projeto> parserProjeto = new ParserProjeto();		
+//		CSVFile<Projeto> csvProjeto;
+//		csvProjeto = new CSVFile<>("projetos.csv", parserProjeto);
+//		Projeto projeto = null;
+//		do {
+//			projeto = csvProjeto.readObject();
+//			if (projeto != null) {
+//				listaProjetos.adiciona(projeto);
+////				System.out.println(projeto);
+//			}
+//		} while (projeto != null);
+//		System.out.println();
+//	}
+//	
+//}

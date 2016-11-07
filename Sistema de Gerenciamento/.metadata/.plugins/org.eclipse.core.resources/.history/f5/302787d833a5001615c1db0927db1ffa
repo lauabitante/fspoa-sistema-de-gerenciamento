@@ -1,0 +1,41 @@
+import java.io.FileNotFoundException;
+
+public class SistemaDeGerenciamento {
+
+	public static void main(String[] args) {
+
+		try {
+			(new SistemaDeGerenciamento()).run();
+		} catch (FileNotFoundException e) {
+			System.err.println("Arquivo nao encontrado");
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public void run() throws FileNotFoundException {
+		
+		//Leitura FUNCIONARIO
+		Parser<Funcionario> parserFuncionario = new ParserFuncionario();		
+		CSVFile<Funcionario> csvFuncionario;
+		csvFuncionario = new CSVFile<>("funcionarios.csv", parserFuncionario);
+		Funcionario funcionario = null;
+		do {
+			funcionario = csvFuncionario.readObject();
+			if (funcionario != null)
+				System.out.println(funcionario);
+		} while (funcionario != null);
+		
+		System.out.println();
+		
+		//Leitura COMPETENCIA
+		Parser<Competencia> parserCompetencia = new ParserCompetencia();		
+		CSVFile<Competencia> csvCompetencia;
+		csvCompetencia = new CSVFile<>("competencias.csv", parserCompetencia);
+		Competencia competencia = null;
+		do {
+			competencia = csvCompetencia.readObject();
+			if (competencia != null)
+				System.out.println(competencia);
+		} while (competencia != null);
+	}
+}

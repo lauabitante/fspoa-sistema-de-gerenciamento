@@ -1,0 +1,22 @@
+
+public class Colaborador {
+	
+	private String colaborador;
+
+	public Colaborador(String colaborador) {
+		this.colaborador = colaborador;
+	}
+
+	public String getColaborador() {
+		return colaborador;
+	}
+
+	public void setColaborador(String colaborador) {
+		this.colaborador = colaborador;
+	}
+
+	@Override
+	public String toString() {
+		return "Colaborador [colaborador=" + colaborador + "]";
+	}
+}

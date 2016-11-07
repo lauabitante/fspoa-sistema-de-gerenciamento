@@ -1,0 +1,27 @@
+import java.time.LocalDate;
+import java.util.Scanner;
+
+public class ParserProjeto implements Parser<Projeto> {
+
+	@Override
+	public Projeto parseObject(String dadosCSV) {
+		
+		Scanner scan = new Scanner(dadosCSV);
+		scan.useDelimiter(";");
+
+		String nomeProjeto = scan.next();		
+		LocalDate dataInicio = LocalDate.parse(scan.next());
+		LocalDate dataFim = LocalDate.parse(scan.next());
+		int qtdCompetencias = scan.nextInt();
+		
+		Projeto projeto = new Projeto(nomeProjeto, dataInicio, dataFim, qtdCompetencias);
+		
+		while(scan.hasNext()){
+			projeto.adicionaCompetencia(scan.next());
+		}
+
+		scan.close();
+
+		return projeto;	
+	}
+}

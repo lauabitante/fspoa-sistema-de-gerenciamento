@@ -1,0 +1,12 @@
+
+public class SistemaDeGerenciamento {
+
+	public static void main(String[] args) {
+
+		Aplicacao aplicacao = new Aplicacao();
+		
+		
+	}
+	
+	
+}

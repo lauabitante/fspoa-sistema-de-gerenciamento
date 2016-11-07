@@ -1,0 +1,58 @@
+//nome;data_inicio;data_fim;num_competencias;competencia;competencia...
+
+import java.time.LocalDate;
+
+public class Projeto {
+
+	private String nomeProjeto;
+	private LocalDate dataInicio;
+	private LocalDate dataFim;
+	private int qtdCompetencias;
+	private ListaEncadeada<Competencia> listaCompetencias = new ListaEncadeada<>();
+	
+	public Projeto(String nomeProjeto, LocalDate dataInicio, LocalDate dataFim, int qtdCompetencias) {
+		super();
+		this.nomeProjeto = nomeProjeto;
+		this.dataInicio = dataInicio;
+		this.dataFim = dataFim;
+		this.qtdCompetencias = qtdCompetencias;
+	}
+
+	public String getNomeProjeto() {
+		return nomeProjeto;
+	}
+
+	public void setNomeProjeto(String nomeProjeto) {
+		this.nomeProjeto = nomeProjeto;
+	}
+
+	public LocalDate getDataInicio() {
+		return dataInicio;
+	}
+
+	public void setDataInicio(LocalDate dataInicio) {
+		this.dataInicio = dataInicio;
+	}
+
+	public LocalDate getDataFim() {
+		return dataFim;
+	}
+
+	public void setDataFim(LocalDate dataFim) {
+		this.dataFim = dataFim;
+	}
+
+	public int getQtdCompetencias() {
+		return qtdCompetencias;
+	}
+
+	public void setQtdCompetencias(int qtdCompetencias) {
+		this.qtdCompetencias = qtdCompetencias;
+	}
+
+	@Override
+	public String toString() {
+		return "Projeto [nomeProjeto=" + nomeProjeto + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim
+				+ ", qtdCompetencias=" + qtdCompetencias + ", listaCompetencias=" + listaCompetencias + "]";
+	}
+}
