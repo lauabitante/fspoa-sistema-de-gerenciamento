@@ -17,6 +17,7 @@ public class Competencia {
 
 	@Override
 	public String toString() {
-		return "Competencia [competencia=" + competencia + "]";
+//		return "Competencia [competencia=" + competencia + "]";
+		return competencia;
 	}
 }

@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class SistemaDeGerenciamento {
 	
 	public Aplicacao aplicacao = new Aplicacao();
+	public static GerenciaProjeto gerenciaProjeto = new GerenciaProjeto();
 	static Scanner scan = new Scanner(System.in);
 	static int opcao;
 
@@ -22,7 +23,8 @@ public class SistemaDeGerenciamento {
 	public static void executaOpcao(int opcao){
 		switch(opcao){
 		case 1:
-			
+			gerenciaProjeto.criaProjeto();
+			System.out.println(Aplicacao.getInstance().listaProjetos.toString());
 			break;
 		}
 	}

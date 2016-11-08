@@ -2,6 +2,12 @@ import java.io.FileNotFoundException;
 
 public class Aplicacao {
 	
+	private static Aplicacao singleton = new Aplicacao();
+	
+	public static Aplicacao getInstance(){
+		return singleton;
+	}
+	
 	ListaEncadeada<Colaborador> listaColaboradores = new ListaEncadeada<>();
 	ListaEncadeada<Competencia> listaCompetencias  = new ListaEncadeada<>();
 	ListaEncadeada<Funcionario> listaFuncionarios  = new ListaEncadeada<>();

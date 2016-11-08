@@ -53,6 +53,24 @@ public class ListaEncadeada <T> {
 			}
 		}
 	}
+	
+	
+	public Node<T> getElemento(int indice){
+		
+		Node node = primeiro;
+		
+		for(int i=1; i<totalDeElementos; i++){
+			if(i == indice){
+				return node;
+			}
+			else{
+				node = node.proximo();
+			}
+		}
+		return null;
+	}
+	
+	
 
 	// Retorna o tamanho da lista
 	public int tamanho() {
@@ -81,5 +99,18 @@ public class ListaEncadeada <T> {
 		builder.append("]");
 
 		return builder.toString();
+	}
+	
+	public void imprimirIndexado() {
+		// Verificando se a Lista está vazia
+		if(this.totalDeElementos == 0){
+			System.out.println("[]");
+		}
+		Node<T> atual = primeiro;
+		// Percorrendo até o penúltimo elemento.
+		for (int i = 1; i < this.totalDeElementos; i++) {
+			System.out.println("["+ i + "] - " + atual.valor());
+			atual = atual.proximo();
+		}
 	}
 }
