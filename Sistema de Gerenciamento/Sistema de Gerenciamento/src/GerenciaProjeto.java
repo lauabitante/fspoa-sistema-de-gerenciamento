@@ -5,7 +5,7 @@ public class GerenciaProjeto {
 
 	Scanner scan = new Scanner(System.in);
 	
-	public void criaProjeto(){
+	public void criaProjeto() {
 		System.out.println("Digite o nome do Projeto: ");
 		String nomeProjeto = scan.nextLine();
 		
@@ -40,4 +40,36 @@ public class GerenciaProjeto {
 		
 		Aplicacao.getInstance().listaProjetos.adiciona(projeto);
 	}
+	
+	
+	public void excluiProjeto() {
+		
+		System.out.println("LISTA DE PROJETOS:");
+		Aplicacao.getInstance().listaProjetos.imprimirIndexado();
+		int codProjeto;
+		
+		do{
+			System.out.println("Digite o código do Projeto para Excluir ou 0 para sair: ");
+			codProjeto = scan.nextInt();
+			
+			if(codProjeto > Aplicacao.getInstance().listaProjetos.tamanho()){
+				System.out.println("Valor inválido! \n Tente novamente ou digite 0 para sair.");
+			}
+			else if(codProjeto != 0){
+				Node<Projeto> projeto = Aplicacao.getInstance().listaProjetos.getElemento(codProjeto);
+				System.out.println("Projeto: "+projeto.valor().getNomeProjeto()+" excluído com sucesso!");
+				Aplicacao.getInstance().listaProjetos.remove(projeto.valor());	
+				System.out.println();
+				break;
+			}
+		}
+		while(codProjeto != 0);
+	}	
+
+
+	public void listaProjetosAtivos() {
+		
+	}
+
 }
+

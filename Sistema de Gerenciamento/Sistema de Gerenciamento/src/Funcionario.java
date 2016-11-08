@@ -27,14 +27,38 @@ public class Funcionario {
 		this.salario = salario;
 	}
 	
+	public int getQtdCompetencias() {
+		return qtdCompetencias;
+	}
+
+	public void setQtdCompetencias(int qtdCompetencias) {
+		this.qtdCompetencias = qtdCompetencias;
+	}
+
 	public void adicionaCompetencia(String competencia){
 		Competencia novaCompetencia = new Competencia(competencia);		
 		competencias.adiciona(novaCompetencia);
 	}
+	
+	public String listaCompetencias(){
+		StringBuilder builder = new StringBuilder("[");
+		Node<Competencia> atual = competencias.primeiro;
+
+		for (int i = 0; i < this.competencias.totalDeElementos - 1; i++) {
+			builder.append(atual.valor());
+			builder.append(" | ");
+			atual = atual.proximo();
+		}
+
+		builder.append(atual.valor());
+		builder.append("]");
+
+		return builder.toString();
+	}
 
 	@Override
 	public String toString() {
-		return "Funcionario [nome=" + nome + ", salario=" + salario + ", qtdCompetencias=" + qtdCompetencias
-				+ ", competencias=" + competencias + "]";
+		return "Funcionario: " + nome + ", " + salario + ", " + qtdCompetencias
+				+ " competencias: " + listaCompetencias();
 	}
 }

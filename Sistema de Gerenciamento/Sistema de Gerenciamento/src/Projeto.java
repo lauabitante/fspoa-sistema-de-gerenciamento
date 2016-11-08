@@ -52,10 +52,26 @@ public class Projeto {
 		Competencia novaCompetencia = new Competencia(competencia);
 		competencias.adiciona(novaCompetencia);
 	}
+	
+	public String listaCompetencias(){
+		StringBuilder builder = new StringBuilder("[");
+		Node<Competencia> atual = competencias.primeiro;
+
+		for (int i = 0; i < this.competencias.totalDeElementos - 1; i++) {
+			builder.append(atual.valor());
+			builder.append(" | ");
+			atual = atual.proximo();
+		}
+
+		builder.append(atual.valor());
+		builder.append("]");
+
+		return builder.toString();
+	}
 
 	@Override
 	public String toString() {
-		return "Projeto [nomeProjeto=" + nomeProjeto + ", dataInicio=" + dataInicio + ", dataFim=" + dataFim
-				+ ", qtdCompetencias=" + qtdCompetencias + ", competencias=" + competencias + "]";
+		return "Projeto: " + nomeProjeto + ", Data Inicial: " + dataInicio + ", Data Final: " + dataFim
+				+ qtdCompetencias + " competencias: " + listaCompetencias();
 	}
 }

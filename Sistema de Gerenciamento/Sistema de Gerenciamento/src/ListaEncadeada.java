@@ -1,9 +1,9 @@
 
 public class ListaEncadeada <T> {
 
-	private Node<T> primeiro = null;
-	private Node<T> ultimo = null;
-	private int totalDeElementos = 0;
+	public Node<T> primeiro = null;
+	public Node<T> ultimo = null;
+	public int totalDeElementos = 0;
 
 	public void adiciona(T elemento) {
 
@@ -70,8 +70,6 @@ public class ListaEncadeada <T> {
 		return null;
 	}
 	
-	
-
 	// Retorna o tamanho da lista
 	public int tamanho() {
 		return totalDeElementos;
