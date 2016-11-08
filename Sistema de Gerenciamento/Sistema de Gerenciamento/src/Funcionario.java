@@ -3,7 +3,7 @@ public class Funcionario {
 	private String nome;
 	private Double salario;
 	private int qtdCompetencias;
-	private ListaEncadeada<Competencia> competencias = new ListaEncadeada<>(); 
+	public ListaEncadeada<Competencia> competencias = new ListaEncadeada<>(); 
 	
 	public Funcionario(String nome, Double salario, int qtdCompetencia) {
 		this.nome = nome;
@@ -38,6 +38,32 @@ public class Funcionario {
 	public void adicionaCompetencia(String competencia){
 		Competencia novaCompetencia = new Competencia(competencia);		
 		competencias.adiciona(novaCompetencia);
+	}
+	
+	public int quantidadeProjetos() {
+		Node<Colaborador> atual = Aplicacao.getInstance().listaColaboradores.primeiro;
+		
+		int contProjetos = 0;
+		
+		for(int i=0; i<Aplicacao.getInstance().listaColaboradores.tamanho(); i++){
+			if(atual.valor().getColaborador().equals(getNome())){
+				contProjetos++;
+			}
+			atual = atual.proximo();
+		}
+		return contProjetos;
+	}
+	
+	public boolean possuiCompetencia(Competencia competencia) {
+		Node<Competencia> atual = competencias.primeiro;
+		
+		for(int i=0; i<competencias.tamanho(); i++){
+			if(atual.valor().getCompetencia().equals(competencia.getCompetencia())){
+				return true;
+			}
+			atual = atual.proximo();
+		}
+		return false;
 	}
 	
 	public String listaCompetencias(){

@@ -53,7 +53,7 @@ public class SistemaDeGerenciamento {
 			break;
 			
 		case 4:
-			
+			gerenciaProjeto.incluiFuncionario();
 			break;
 			
 		case 5:
@@ -67,9 +67,11 @@ public class SistemaDeGerenciamento {
 			break;
 			
 		case 7:
+			gerenciaProjeto.listaProjetosAtivos();
 			break;
 			
 		case 8:
+			gerenciaProjeto.listaProjetosPendentes();
 			break;
 			
 		default:

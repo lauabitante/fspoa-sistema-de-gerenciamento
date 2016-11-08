@@ -59,7 +59,7 @@ public class ListaEncadeada <T> {
 		
 		Node node = primeiro;
 		
-		for(int i=1; i<totalDeElementos; i++){
+		for(int i=1; i<totalDeElementos + 1; i++){
 			if(i == indice){
 				return node;
 			}
@@ -72,7 +72,7 @@ public class ListaEncadeada <T> {
 	
 	// Retorna o tamanho da lista
 	public int tamanho() {
-		return totalDeElementos;
+		return this.totalDeElementos;
 	}
 
 	public String toString() {
@@ -106,9 +106,11 @@ public class ListaEncadeada <T> {
 		}
 		Node<T> atual = primeiro;
 		// Percorrendo até o penúltimo elemento.
-		for (int i = 1; i < this.totalDeElementos; i++) {
-			System.out.println("["+ i + "] - " + atual.valor());
+		int cont = 1;
+		do  {
+			System.out.println("["+ cont + "] - " + atual.valor());
 			atual = atual.proximo();
-		}
+			cont++;
+		} while (atual != null);
 	}
 }

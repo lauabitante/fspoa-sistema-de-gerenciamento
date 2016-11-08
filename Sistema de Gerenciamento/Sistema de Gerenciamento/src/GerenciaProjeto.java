@@ -51,8 +51,7 @@ public class GerenciaProjeto {
 		do{
 			System.out.println("Digite o código do Projeto para Excluir ou 0 para sair: ");
 			codProjeto = scan.nextInt();
-			
-			if(codProjeto > Aplicacao.getInstance().listaProjetos.tamanho()){
+			if(codProjeto > Aplicacao.getInstance().listaProjetos.totalDeElementos){
 				System.out.println("Valor inválido! \n Tente novamente ou digite 0 para sair.");
 			}
 			else if(codProjeto != 0){
@@ -68,7 +67,94 @@ public class GerenciaProjeto {
 
 
 	public void listaProjetosAtivos() {
+		LocalDate today = LocalDate.now();
 		
+		Node<Projeto> atual = Aplicacao.getInstance().listaProjetos.primeiro;
+		
+		System.out.println("LISTA DE PROJETOS ATIVOS:");
+		System.out.println();
+		
+		for(int i=0; i<Aplicacao.getInstance().listaProjetos.tamanho(); i++){
+			if(atual.valor().getDataFim().isAfter(today)){
+				System.out.println(atual.valor().toString());
+			}
+			atual = atual.proximo();
+		}
+	}
+	
+	public void listaProjetosPendentes() {
+	
+		Node<Projeto> atual = Aplicacao.getInstance().listaProjetos.primeiro;
+		
+		System.out.println("LISTA DE PROJETOS PENDENTES:");
+		System.out.println();
+		
+		for(int i=0; i<Aplicacao.getInstance().listaProjetos.tamanho(); i++){
+			if(atual.valor().possuiPendencias()){
+				System.out.println(atual.valor().toString());
+			}
+			atual = atual.proximo();
+		}
+	}
+
+	
+	public void incluiFuncionario()	{
+		System.out.println("LISTA DE PROJETOS:");
+		Aplicacao.getInstance().listaProjetos.imprimirIndexado();
+		int codProjeto;
+		int codFuncionario;
+		
+		do{
+			System.out.println("Digite o código do Projeto para Incluir um Funcionário ou 0 para sair: ");
+			codProjeto = scan.nextInt();
+			if(codProjeto > Aplicacao.getInstance().listaProjetos.tamanho()){
+				System.out.println("Valor inválido! \n Tente novamente ou digite 0 para sair.");
+			}
+			else if(codProjeto != 0){
+				Node<Projeto> projeto = Aplicacao.getInstance().listaProjetos.getElemento(codProjeto);
+				ListaEncadeada<Funcionario> lista = projeto.valor().listaFuncionariosDisponiveis();
+				System.out.println("Funcionários disponíveis para este Projeto: ");
+				System.out.println();
+				lista.imprimirIndexado();
+				
+				do{
+					System.out.println("Digite o código do funcionário para incluir no Projeto ou 0 para sair: ");
+					codFuncionario = scan.nextInt();
+					
+					if(codFuncionario > lista.totalDeElementos) {
+						System.out.println("Valor inválido! \n Tente novamente ou digite 0 para sair.");
+					}
+					else if(codFuncionario != 0) {
+						Node<Funcionario> funcionario = lista.getElemento(codFuncionario);
+						if(funcionario.valor().quantidadeProjetos() < 2){
+							Competencia competencia = new Competencia("");
+							
+							Node<Competencia> atual = funcionario.valor().competencias.primeiro;
+							
+							for(int i=0; i<funcionario.valor().competencias.tamanho(); i++){
+								if(projeto.valor().possuiCompetencia(atual.valor())){
+									competencia = atual.valor();
+									break;
+								}
+								atual = atual.proximo();
+							}
+							
+							Colaborador novoColaborador = new Colaborador(projeto.valor().getNomeProjeto(), funcionario.valor().getNome(), competencia.getCompetencia());
+							Aplicacao.getInstance().listaColaboradores.adiciona(novoColaborador);
+							System.out.println("Funcionário " + funcionario.valor().getNome() + " adicionado com sucesso!");
+							break;
+						}
+						else{
+							System.out.println("O funcionário selecionado não está disponivel. Tente novamente!");
+						}
+					}
+				}
+				while(codFuncionario != 0);
+				
+				break;
+			}
+		}
+		while(codProjeto != 0);
 	}
 
 }
