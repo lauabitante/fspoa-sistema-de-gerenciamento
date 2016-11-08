@@ -99,13 +99,10 @@ public class Projeto {
 	}
 	
 	public boolean possuiPendencias() {
-		
 		int comp = 0;
-
 		Node<Competencia> competenciaAtual = competencias.primeiro;
 		
 		for (int i = 1; i < competencias.totalDeElementos; i++) {
-			
 			Node<Colaborador> colaboradorAtual = Aplicacao.getInstance().listaColaboradores.primeiro;
 			for (int j = 1; j < Aplicacao.getInstance().listaColaboradores.tamanho(); j++) {
 				if (colaboradorAtual.valor().getCompetencia().equals(competenciaAtual.valor().getCompetencia())) {

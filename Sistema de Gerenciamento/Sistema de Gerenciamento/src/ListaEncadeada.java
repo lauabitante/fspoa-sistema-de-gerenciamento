@@ -54,11 +54,8 @@ public class ListaEncadeada <T> {
 		}
 	}
 	
-	
-	public Node<T> getElemento(int indice){
-		
-		Node node = primeiro;
-		
+	public Node<T> getElemento(int indice) {
+		Node<T> node = primeiro;
 		for(int i=1; i<totalDeElementos + 1; i++){
 			if(i == indice){
 				return node;
@@ -76,7 +73,6 @@ public class ListaEncadeada <T> {
 	}
 
 	public String toString() {
-
 		// Verificando se a Lista está vazia
 		if(this.totalDeElementos == 0){
 			return "[]";

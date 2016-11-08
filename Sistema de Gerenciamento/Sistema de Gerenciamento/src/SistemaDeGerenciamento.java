@@ -17,6 +17,8 @@ public class SistemaDeGerenciamento {
 	
 	public static void mostraMenu(){
 		while(true){
+			System.out.println();
+			System.out.println();
 			System.out.println("[SISTEMA DE GERENCIAMENTO DE PROJETOS] \n");
 			System.out.println("Selecione uma Opção:");
 			System.out.println("[1]Novo Projeto");
