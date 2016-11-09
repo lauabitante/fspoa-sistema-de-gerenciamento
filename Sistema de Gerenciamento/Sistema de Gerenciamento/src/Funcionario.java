@@ -65,26 +65,10 @@ public class Funcionario {
 		}
 		return false;
 	}
-	
-	public String listaCompetencias(){
-		StringBuilder builder = new StringBuilder("[");
-		Node<Competencia> atual = competencias.primeiro;
-
-		for (int i = 0; i < this.competencias.totalDeElementos - 1; i++) {
-			builder.append(atual.valor());
-			builder.append(" | ");
-			atual = atual.proximo();
-		}
-
-		builder.append(atual.valor());
-		builder.append("]");
-
-		return builder.toString();
-	}
 
 	@Override
 	public String toString() {
 		return "Funcionario: " + nome + ", " + salario + ", " + qtdCompetencias
-				+ " competencias: " + listaCompetencias();
+				+ " competencias: " + competencias.toStringHorizontal();
 	}
 }

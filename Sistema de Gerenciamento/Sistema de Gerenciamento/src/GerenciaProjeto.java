@@ -150,7 +150,6 @@ public class GerenciaProjeto {
 					}
 				}
 				while(codFuncionario != 0);
-				
 				break;
 			}
 		}

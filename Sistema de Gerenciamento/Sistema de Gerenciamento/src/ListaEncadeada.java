@@ -98,15 +98,34 @@ public class ListaEncadeada <T> {
 	public void imprimirIndexado() {
 		// Verificando se a Lista está vazia
 		if(this.totalDeElementos == 0){
-			System.out.println("[]");
+			System.out.println("[ Lista Vazia ]");
+			return;
 		}
 		Node<T> atual = primeiro;
 		// Percorrendo até o penúltimo elemento.
 		int cont = 1;
 		do  {
-			System.out.println("["+ cont + "] - " + atual.valor());
-			atual = atual.proximo();
-			cont++;
+			if (atual.valor() != null) {
+				System.out.println("["+ cont + "] - " + atual.valor());
+				atual = atual.proximo();
+				cont++;
+			}
 		} while (atual != null);
+	}
+	
+	public String toStringHorizontal(){
+		StringBuilder builder = new StringBuilder("[");
+		Node<T> atual = primeiro;
+
+		for (int i = 0; i < this.totalDeElementos - 1; i++) {
+			builder.append(atual.valor());
+			builder.append(" | ");
+			atual = atual.proximo();
+		}
+
+		builder.append(atual.valor());
+		builder.append("]");
+
+		return builder.toString();
 	}
 }

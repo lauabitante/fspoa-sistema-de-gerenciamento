@@ -82,22 +82,6 @@ public class Projeto {
 		return lista;
 	}
 	
-	public String listaCompetencias(){
-		StringBuilder builder = new StringBuilder("[");
-		Node<Competencia> atual = competencias.primeiro;
-
-		for (int i = 0; i < this.competencias.totalDeElementos - 1; i++) {
-			builder.append(atual.valor());
-			builder.append(" | ");
-			atual = atual.proximo();
-		}
-
-		builder.append(atual.valor());
-		builder.append("]");
-
-		return builder.toString();
-	}
-	
 	public boolean possuiPendencias() {
 		int comp = 0;
 		Node<Competencia> competenciaAtual = competencias.primeiro;
@@ -112,12 +96,12 @@ public class Projeto {
 			}
 			competenciaAtual = competenciaAtual.proximo();
 		}
-		return  comp <= qtdCompetencias;
+		return  comp < qtdCompetencias;
 	}
 
 	@Override
 	public String toString() {
 		return "Projeto: " + nomeProjeto + ", Data Inicial: " + dataInicio + ", Data Final: " + dataFim
-				+ ", " + qtdCompetencias + " competencias: " + listaCompetencias();
+				+ ", " + qtdCompetencias + " competencias: " + competencias.toStringHorizontal();
 	}
 }
